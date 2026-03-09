@@ -1,0 +1,140 @@
+@use '@/shared/styles/variables' as *;
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    margin: $space-xxl 0 24px;
+}
+
+.header :global(.text-red) {
+    font-size: $font-lg;
+}
+
+.cards {
+    display: grid;
+    
+    grid-template-columns: repeat(auto-fit, minmax($card-width, 1fr));
+    
+    justify-items: center; 
+    
+    gap: $space-xl;
+    width: 100%;
+    padding: 0;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+    gap: 20px;
+    text-align: center;
+}
+
+.loading, .error {
+    padding: $space-xl;
+    text-align: center;
+}
+
+.skeletonCard {
+    width: $card-width;
+    height: 600px;
+    background: #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    animation: pulse 1.5s infinite ease-in-out;
+    box-sizing: border-box;
+}
+
+.skeletonImage {
+    flex: 1;
+    background: #d0d0d0;
+    border-radius: 4px;
+}
+
+.skeletonText {
+    height: 20px;
+    background: #d0d0d0;
+    border-radius: 4px;
+}
+
+.skeletonTextShort {
+    height: 20px;
+    width: 60%;
+    background: #d0d0d0;
+    border-radius: 4px;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@media (max-width: $screen-m) {
+    .cards {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}
+
+@media (min-width: $screen-s) {
+    .cards {
+        gap: $space-xl;
+    }
+}
+
+@media (min-width: $screen-m) {
+    .content {
+        padding: 40px $space-xl 0;
+    }
+
+    .header {
+        margin: 40px 0 32px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax($card-width, 1fr));
+        gap: 28px;
+    }
+}
+
+@media (min-width: $screen-l) {
+    .content {
+        padding: 48px 40px 0;
+        max-width: 1180px;
+    }
+
+    .cards {
+        gap: $space-xl;
+    }
+
+    .header {
+        margin: 48px 0 40px;
+    }
+}
+
+@media (min-width: $screen-xl) {
+    .content {
+        padding: 56px 0 0;
+        max-width: 1400px;
+    }
+
+    .cards {
+        gap: 36px;
+    }
+}

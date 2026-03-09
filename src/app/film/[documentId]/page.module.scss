@@ -1,0 +1,246 @@
+@use '@/shared/styles/variables' as *;
+
+.page {
+    background: $color-page-bg;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: $space-xl $space-sm;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: $space-xl;
+}
+
+.back {
+    padding-top: 41px;
+    padding-bottom: 32px;
+    width: 129px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    cursor: pointer;
+}
+
+.recommendations {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+    width: 100%;
+}
+
+.carouselContainer {
+    position: relative;
+    width: 100%;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: $space-lg;
+    overflow: visible;
+}
+
+.carouselArrowLeft,
+.carouselArrowRight {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: $carousel-arrow-size;
+    height: $carousel-arrow-size;
+    border-radius: 50%;
+    border: none;
+    background: $color-carousel-arrow-bg;
+    color: $color-carousel-arrow;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.carouselArrowLeft {
+    left: calc(-1 * #{$carousel-arrow-size} / 2);
+}
+
+.carouselArrowRight {
+    right: calc(-1 * #{$carousel-arrow-size} / 2);
+}
+
+.cards {
+    display: grid;
+    gap: $space-lg;
+    overflow: visible;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax($card-width, $card-width));
+}
+
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+%skeleton-item {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+.skeletonBack {
+    @extend %skeleton-item;
+    width: 100px;
+    height: 20px;
+    margin-bottom: 20px;
+    // Имитируем отступы кнопки "Назад"
+    margin-top: 41px; 
+}
+
+// Основной контейнер (повторяет .bigCard)
+.skeletonBigCard {
+    display: flex;
+    flex-direction: column; // По умолчанию колонка (мобильники)
+    gap: $space-lg;
+    width: 100%;
+}
+
+// Картинка (повторяет .bigCardImage)
+.skeletonBigImage {
+    @extend %skeleton-item;
+    width: 100%;
+    aspect-ratio: 16 / 9; // Соотношение сторон как у оригинала
+    border-radius: $border-radius;
+}
+
+// Тело карточки (повторяет .bigCardBody)
+.skeletonBigCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    min-width: 0;
+}
+
+// Блок заголовка и рейтинга (повторяет .textFrame1)
+.skeletonTextFrame1 {
+    display: flex;
+    flex-direction: column; // Мобильная версия: друг под другом
+    gap: $space-sm;
+}
+
+.skeletonTitle {
+    @extend %skeleton-item;
+    // Ширина как у текста, высота под p-32
+    width: 70%;
+    height: 32px;
+}
+
+.skeletonRating {
+    @extend %skeleton-item;
+    // Имитация бейджа с рейтингом
+    width: 60px;
+    height: 32px;
+    border-radius: $badge-radius;
+}
+
+// Блок мета-данных (повторяет .textFrame2)
+.skeletonTextFrame2 {
+    @extend %skeleton-item;
+    height: 20px;
+    width: 50%;
+}
+
+// Блок описания (повторяет .textFrame3)
+.skeletonTextFrame3 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skeletonTextLine {
+    @extend %skeleton-item;
+    width: 100%;
+    height: 16px;
+}
+
+.skeletonTextLineShort {
+    @extend %skeleton-item;
+    width: 60%;
+    height: 16px;
+}
+
+// --- Медиа запросы для скелетона (повторяют логику BigCard) ---
+
+@media (min-width: $screen-l) {
+    .skeletonBigImage {
+        // На планшете картинка ограничена по ширине, как в оригинале
+        width: 720px;
+        flex-shrink: 0;
+    }
+
+    .skeletonTextFrame1 {
+        // На L версии заголовок и рейтинг в одну строку
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .skeletonTitle {
+        // Заголовок забирает свободное место
+        flex: 1; 
+    }
+}
+
+@media (min-width: $screen-xl) {
+    .skeletonBigCard {
+        // На десктопе карточка становится горизонтальной
+        flex-direction: row;
+        gap: $space-xl;
+    }
+
+    .skeletonBigImage {
+        // На десктопе ширина картинки увеличивается
+        width: 800px;
+    }
+}
+
+
+@media (min-width: $screen-s) {
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax($card-width, $card-width));
+    }
+}
+
+@media (min-width: $screen-l) and (max-width: $screen-xl) {
+    .cards {
+        justify-content: space-around;
+        grid-template-columns: repeat(auto-fit, minmax($card-width, $card-width));
+    }
+}
+
+@media (min-width: $screen-xl) {
+    .cards {
+        display: flex;
+        justify-content: space-between;
+        gap: $carousel-gap;
+        overflow: hidden;
+    }
+
+    .cards>* {
+        flex: 0 0 $carousel-card-width;
+    }
+
+    .carouselArrowLeft,
+    .carouselArrowRight {
+        display: block;
+    }
+}
