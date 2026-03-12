@@ -42,30 +42,31 @@ export interface FilmsQueryParams {
     pageSize?: number;
     search?: string;
     genres?: string[];
-    excludeId?: string; // Для рекомендаций
-    yearRange?: { min: number; max: number }; // Для рекомендаций
-    ids?: string[]; // Если нужно получить по ID
+    excludeId?: string;
+    yearRange?: { min: number; max: number };
+    ids?: string[];
 }
 
-// --- Функции запросов ---
+interface StrapiFilters {
+    title?: { $containsi: string };
+    category?: { slug: { $in: string[] } };
+    releaseYear?: { $gte: number; $lte: number };
+    documentId?: { $ne: string } | { $in: string[] };
+}
 
-// Получение списка фильмов (универсальная)
 export const fetchFilms = async (params: FilmsQueryParams): Promise<FilmsResponse> => {
     const { page = 1, pageSize = 9, search, genres, excludeId, yearRange, ids } = params;
 
-    const filters: any = {};
+    const filters: StrapiFilters = {};
 
-    // Фильтр по поиску
     if (search) {
         filters.title = { $containsi: search };
     }
 
-    // Фильтр по жанрам
     if (genres && genres.length > 0) {
         filters.category = { slug: { $in: genres } };
     }
 
-    // Фильтр по годам (для рекомендаций)
     if (yearRange) {
         filters.releaseYear = {
             $gte: yearRange.min,
@@ -96,7 +97,6 @@ export const fetchFilms = async (params: FilmsQueryParams): Promise<FilmsRespons
     return data;
 };
 
-// Получение одного фильма
 export const fetchFilmById = async (documentId: string): Promise<Film> => {
     const query = qs.stringify({
         populate: ["poster", "category", "gallery"],
@@ -104,4 +104,11 @@ export const fetchFilmById = async (documentId: string): Promise<Film> => {
 
     const { data } = await axios.get<SingleFilmResponse>(`${STRAPI_URL}/films/${documentId}?${query}`);
     return data.data;
+};
+
+export const getStrapiMediaUrl = (url?: string): string | null => {
+    if (!url) return null;
+    if (url.startsWith('http')) return url;
+
+    return `${STRAPI_BASE_URL}${url}`;
 };

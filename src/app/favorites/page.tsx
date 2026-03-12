@@ -6,10 +6,10 @@ import Button from "@/shared/components/Button";
 import Card from "@/shared/components/Card";
 import { useFavorites } from "@/shared/hooks/useFavorites";
 import { useFilms } from "@/shared/hooks/useFilms";
-import { STRAPI_URL } from "@/shared/services/FilmService";
 import cover1 from "@/shared/assets/Rectangle 25.png";
 import Link from "next/link";
-import { Film } from "@/shared/types/film"
+import { Film } from "@/shared/types/film";
+import { getStrapiMediaUrl } from '@/shared/services/FilmService';
 
 const FavoritesPage = () => {
     const { favorites, toggleFavorite } = useFavorites();
@@ -38,7 +38,7 @@ const FavoritesPage = () => {
                         Вы еще не добавили ни одного фильма в избранное.
                     </Text>
 
-                    <Link href="/films">
+                    <Link href="/">
                         <Button variant="filled">Смотреть фильмы</Button>
                     </Link>
                 </div>
@@ -56,9 +56,7 @@ const FavoritesPage = () => {
         return (
             <div className={styles.cards}>
                 {displayedFilms.map((film: Film) => {
-                    const imageUrl = film.poster?.url
-                        ? `${STRAPI_URL}${film.poster.url}`
-                        : cover1.src;
+                    const imageUrl = getStrapiMediaUrl(film.poster?.url) || cover1.src;
 
                     return (
                         <Card

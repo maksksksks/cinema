@@ -1,13 +1,14 @@
 import React from 'react';
+import Image from 'next/image';
 import Text from '../Text/Text';
 import styles from './Card.module.scss';
 import StarIcon from '../icons/StarIcon';
 
 export type CardProps = {
     image: string;
-    rating?: React.ReactNode;        // левый badge (рейтинг)
-    label?: React.ReactNode;         // правый badge
-    meta?: React.ReactNode;          // строка типа "Wood • Modern • 2024"
+    rating?: React.ReactNode;
+    label?: React.ReactNode;
+    meta?: React.ReactNode;
     title: React.ReactNode;
     subtitle: React.ReactNode;
     secondaryAction?: React.ReactNode;
@@ -26,16 +27,24 @@ const Card: React.FC<CardProps> = ({
 }) => {
     return (
         <div className={styles.card}>
-
             <div className={styles.header}>
-                <img src={image} alt="" className={styles.image} />
+                <div className={styles.imageWrapper}>
+                    <Image
+                        src={image}
+                        alt={typeof title === 'string' ? title : 'Film poster'}
+                        fill
+                        className={styles.image}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        priority={false}
+                    />
+                </div>
 
                 {rating && (
                     <div className={`${styles.badge} ${styles.left}`}>
                         <Text view="p-18" weight="bold" color="primary">
                             {rating}
                         </Text>
-                        <StarIcon width={20} height={20}></StarIcon>
+                        <StarIcon width={20} height={20} />
                     </div>
                 )}
 

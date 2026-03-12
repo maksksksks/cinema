@@ -12,7 +12,7 @@ export default function NotFoundPage() {
             <Text tag="p" view="p-20" color="secondary">
                 К сожалению, такой страницы не существует.
             </Text>
-            <Link href="/films">
+            <Link href="/">
                 <Button variant="filled">Вернуться к фильмам</Button>
             </Link>
         </div>

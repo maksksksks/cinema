@@ -56,6 +56,18 @@
     align-items: center;
 }
 
+.bigCardImageWrapper {
+    position: relative;
+    width: 100%;
+    height: 400px; // Или ваша желаемая высота
+    overflow: hidden;
+    border-radius: 8px; // Опционально
+}
+
+.bigCardImage {
+    object-fit: cover; // Важно для правильного отображения
+}
+
 /* ================= MEDIA ================= */
 
 @media (min-width: $screen-m) {

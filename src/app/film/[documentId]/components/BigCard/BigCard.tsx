@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Text from "@/shared/components/Text"
 import styles from "./BigCard.module.scss";
 import StarIcon from '@/shared/components/icons/StarIcon';
@@ -44,32 +45,26 @@ const BigCard: React.FC<CardProps> = ({
             className={`${styles.bigCard} ${className}`}
             onClick={onClick}
         >
-            <img
-                src={image}
-                alt={typeof title === 'string' ? title : 'card image'}
-                className={styles.bigCardImage}
-            />
+            {/* Оборачиваем Image в контейнер с position: relative */}
+            <div className={styles.bigCardImageWrapper}>
+                <Image
+                    src={image}
+                    alt={typeof title === 'string' ? title : 'card image'}
+                    fill // Заполняет контейнер
+                    className={styles.bigCardImage} // В SCSS нужно добавить object-fit: cover
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority // Загружаем сразу, так как это главное изображение
+                />
+            </div>
 
             <div className={styles.bigCardBody}>
                 <div className={styles.textFrame1}>
-                    <Text
-                        tag="h2"
-                        view="p-32"
-                        weight="bold"
-                        color="primary"
-                        maxLines={2}
-                    >
+                    <Text tag="h2" view="p-32" weight="bold" color="primary" maxLines={2}>
                         {title}
                     </Text>
 
                     <div className={styles.rating}>
-                        <Text
-                            tag="p"
-                            view="p-24"
-                            weight="bold"
-                            color="primary"
-                            maxLines={1}
-                        >
+                        <Text tag="p" view="p-24" weight="bold" color="primary" maxLines={1}>
                             {rating}
                         </Text>
                         <StarIcon width={24} height={24} />
@@ -77,49 +72,24 @@ const BigCard: React.FC<CardProps> = ({
                 </div>
 
                 <div className={styles.textFrame2}>
-                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>
-                        {year}
-                    </Text>
-                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>
-                        {"•"}
-                    </Text>
-                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>
-                        {genre}
-                    </Text>
-                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>
-                        {"•"}
-                    </Text>
-                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>
-                        {age + "+"}
-                    </Text>
-                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>
-                        {"•"}
-                    </Text>
-                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>
-                        {duration}
-                    </Text>
+                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>{year}</Text>
+                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>{"•"}</Text>
+                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>{genre}</Text>
+                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>{"•"}</Text>
+                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>{age + "+"}</Text>
+                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>{"•"}</Text>
+                    <Text tag="h2" view="p-20" weight="bold" color="primary" maxLines={1}>{duration}</Text>
                 </div>
 
                 <div className={styles.textFrame3}>
-                    <Text
-                        tag="p"
-                        view="p-20"
-                        weight="medium"
-                        color="secondary"
-                        maxLines={8}
-                    >
+                    <Text tag="p" view="p-20" weight="medium" color="secondary" maxLines={8}>
                         {description}
                     </Text>
                 </div>
 
                 {(contentSlot || actionSlot) && (
                     <div className={styles.bigCardFooter}>
-                        <Text
-                            tag="h3"
-                            view="p-20"
-                            color="primary"
-                            maxLines={1}
-                        >
+                        <Text tag="h3" view="p-20" color="primary" maxLines={1}>
                             {contentSlot}
                         </Text>
                         {actionSlot}
@@ -129,6 +99,5 @@ const BigCard: React.FC<CardProps> = ({
         </div>
     );
 };
-
 
 export default BigCard;

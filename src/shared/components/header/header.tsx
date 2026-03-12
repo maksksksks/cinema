@@ -10,7 +10,7 @@ import logo from "@/shared/assets/logo.png";
 export default function Header() {
     return (
         <div className={styles.header}>
-            <Link href="/films">
+            <Link href="/">
                 <Image src={logo} alt="Logo" width={142} height={94} />
             </Link>
 
