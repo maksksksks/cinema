@@ -1,0 +1,103 @@
+@use '@/shared/styles/variables' as *;
+
+.text {
+    margin: 0;
+    font-family: $font-family-base;
+    letter-spacing: 0;
+    padding: 0;
+}
+
+.view-title {
+    font-size: $font-display;
+    line-height: $line-height-xxl;
+    font-weight: $font-weight-bold;
+}
+
+.view-p-20 {
+    font-size: $font-lg;
+    line-height: $line-height-lg;
+}
+
+.view-p-20-mono {
+    font-size: $font-lg;
+    line-height: $line-height-sm;
+}
+
+.view-p-18 {
+    font-size: $font-md;
+    line-height: $line-height-md;
+}
+
+.view-p-16 {
+    font-size: $font-sm;
+    line-height: $line-height-sm;
+}
+
+.view-p-14 {
+    font-size: $font-xs;
+    line-height: $line-height-xs;
+}
+
+.view-p-24 {
+    font-size: $font-xl;
+    line-height: $line-height-xl;
+}
+
+.view-p-32 {
+    font-size: $font-xxl;
+    line-height: $line-height-xxl;
+}
+
+.view-button {
+    font-family: $font-family-button;
+    font-size: $button-font-size;
+    font-weight: $button-font-weight;
+    line-height: $button-line-height;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.text-back {
+    padding: $space-sm;
+}
+
+.weight-normal {
+    font-weight: $font-weight-regular;
+}
+
+.weight-medium {
+    font-weight: $font-weight-medium;
+}
+
+.weight-bold {
+    font-weight: $font-weight-bold;
+}
+
+.color-primary {
+    color: $color-primary-text;
+}
+
+.color-secondary {
+    color: $color-secondary-text;
+}
+
+.color-accent {
+    color: $color-accent-text;
+}
+
+.color-red {
+    color: $button-primary-bg;
+}
+
+.clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@for $i from 1 through 10 {
+    .clamp-#{$i} {
+        -webkit-line-clamp: $i;
+    }
+}

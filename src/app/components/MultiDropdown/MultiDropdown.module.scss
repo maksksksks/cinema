@@ -1,0 +1,47 @@
+@use '@/shared/styles/variables' as *;
+
+.multiDropdown {
+  position: relative;
+  font-family: $font-family-button; // Roboto
+}
+
+.options {
+  margin-top: $space-xs; // 8px
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+
+  background: $color-dropdown-bg; // тёмный фон
+  box-shadow: $shadow-dropdown;
+  list-style: none;
+  padding: 0;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: $space-s $space-sm;
+  height: $button-height;
+  cursor: pointer;
+
+  font-size: $font-sm;
+  line-height: $line-height-sm;
+  font-weight: $font-weight-regular;
+  color: $color-dropdown-text;
+
+  &.selected {
+    color: $loader-bg;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.selected {
+  color: $loader-bg;
+  font-weight: $font-weight-medium;
+}
+
+.noResults {
+  padding: $space-s $space-sm;
+  height: $button-height;
+  color: $color-dropdown-text-disabled;
+}

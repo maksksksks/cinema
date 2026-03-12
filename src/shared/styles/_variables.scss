@@ -1,0 +1,111 @@
+$color-primary: #ffffff;
+$color-primary-hover: #6f8c89;
+$color-border: #d9d9d9;
+$color-accent: #E50914;
+$color-white: #ffffff;
+
+$color-primary-text: #ffffff;
+$color-secondary-text: #B3B3B3;
+$color-accent-text: #3b82f6;
+$color-disabled-text: #AFADB5;
+
+$button-primary-text: #ffffff;
+
+$button-primary-bg: #E50914;
+$button-primary-bg-hover: #F40612;
+$button-primary-bg-disabled: #D9D9D9;
+$button-primary-bg-active: #B20710;
+
+$loader-bg: #518581;
+
+$space-xxs: 4px;
+$space-xs: 8px;
+$space-sm: 12px;
+$space-s: 14px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+$space-xxl: 48px;
+
+$font-s: 14px;
+
+$font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-family-button: 'Roboto', sans-serif;
+
+
+$border-radius: 6px;
+
+$font-xs: 14px;
+$font-sm: 16px;
+$font-md: 18px;
+$font-lg: 20px;
+$font-xl: 24px;
+$font-xxl: 32px;
+$font-display: 44px;
+
+$line-height-xs: 18px;
+$line-height-sm: 20px;
+$line-height-md: 22px;
+$line-height-lg: 24px;
+$line-height-xl: 32px;
+$line-height-xxl: 48px;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$button-font-size: 18px;
+$button-line-height: 18px;
+$button-font-weight: 400;
+
+
+$loader-size-s: 24px;
+$loader-size-m: 48px;
+$loader-size-l: 60px;
+
+
+$color-surface-primary: #1e1e1e;
+$color-surface-secondary: #2a2a2a;
+$color-overlay-dark: rgba(0, 0, 0, 0.8);
+
+$card-width: 360px;
+
+$badge-height: 24px;
+$badge-radius: 12px;
+
+$card-button-height: 52px;
+$card-button-padding-y: 17px;
+$card-button-padding-x: 27px;
+
+
+$button-height: 52px;
+$button-padding-y: 16px;
+$button-padding-x: 32px;
+
+$transition-fast: 0.2s ease;
+
+
+$shadow-dropdown: 0px 4px 10px rgba(0, 0, 0, 0.25);
+$color-dropdown-bg: $color-surface-secondary;
+$color-dropdown-text: $color-primary-text;
+$color-dropdown-text-disabled: $color-secondary-text;
+
+
+$color-border-dark: #333333;
+$color-placeholder: #8C8C8C;
+$color-button-bg-hover: #F6121D;
+
+$color-page-bg: #141414;
+$color-carousel-arrow-bg: rgba(0, 0, 0, 0.6);
+$color-carousel-arrow: $color-primary-text;
+$carousel-arrow-size: 44px;
+$carousel-gap: $space-lg;
+$carousel-card-width: 380px;
+
+$header-height-sm: 70px;
+$header-height-md: 80px;
+
+$screen-s: 375px;
+$screen-m: 768px;
+$screen-l: 1024px;
+$screen-xl: 1440px;

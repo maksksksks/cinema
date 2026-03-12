@@ -1,0 +1,57 @@
+@use '@/shared/styles/variables' as *;
+
+.inputContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: $space-s $space-sm; // 14px 12px
+  gap: $space-xs; // 8px
+
+  height: $button-height; // 52px
+  background: $color-surface-primary; // #181818
+  border: 1px solid #333333; // можно добавить токен $color-border-dark если нужно
+  transition: border-color $transition-fast;
+  //min-width: 900px;
+
+  &:focus-within {
+    border-color: $loader-bg; // #518581
+  }
+}
+
+.disabled {
+  border-color: $color-white;
+  cursor: not-allowed;
+}
+
+.inputField {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+
+  font-family: $font-family-button; // Roboto
+  font-size: $font-sm; // 16px
+  line-height: $line-height-sm; // 20px
+  color: $color-secondary-text; // #B3B3B3
+
+  &::placeholder {
+    color: $color-disabled-text; // #AFADB5
+  }
+
+  &:disabled {
+    color: rgba(0, 0, 0, 0.2); // можно сделать токен $color-disabled
+    cursor: not-allowed;
+  }
+}
+
+.inputAfterSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $loader-size-s; // 24px
+  height: $loader-size-s; // 24px
+  flex-shrink: 0;
+}

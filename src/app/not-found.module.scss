@@ -1,0 +1,31 @@
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 16px;
+  text-align: center;
+  padding: 24px;
+
+  h1 {
+    font-size: 2rem;
+    color: #1d3557;
+  }
+
+  p {
+    font-size: 1.25rem;
+    color: #6c757d;
+  }
+
+  a {
+    margin-top: 12px;
+    text-decoration: none;
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@use '@/shared/styles/variables' as *;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $header-height-sm;
+    padding: 0 $space-sm;
+    border-bottom: 2px solid $color-border-dark;
+}
+
+.nav {
+    display: none;
+}
+
+.icons {
+    display: flex;
+    gap: $space-lg;
+}
+
+
+@media (min-width: $screen-m) {
+    .header {
+        height: $header-height-md;
+        padding: 0 $space-xl;
+    }
+
+    .nav {
+        display: flex;
+        gap: $space-xxl;
+    }
+}
+
+@media (min-width: $screen-l) {
+    .header {
+        padding: 0 $space-xxl;
+    }
+}
+
+@media (min-width: $screen-xl) {
+    .header {
+        padding: 0 120px;
+    }
+}

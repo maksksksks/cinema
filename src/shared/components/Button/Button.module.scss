@@ -1,0 +1,78 @@
+@use '@/shared/styles/variables' as *;
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    gap: $space-xs;
+
+    height: $button-height;
+    min-height: $button-height;
+    padding: $space-md $space-xl;
+    
+
+    cursor: pointer;
+    border-radius: $border-radius;
+    border: none;
+
+    transition: all $transition-fast;
+}
+
+/* ================= VARIANTS ================= */
+
+/* Filled */
+.filled {
+    background: $button-primary-bg;
+    color: $button-primary-text;
+
+    &:hover:not(:disabled):not(.loading) {
+        background: $button-primary-bg-hover;
+    }
+}
+
+/* Outlined */
+.outlined {
+    background: transparent;
+    border: 1px solid $button-primary-bg;
+}
+
+/* Underline */
+.underline {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid $button-primary-bg;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    height: 100%;
+}
+
+/* ================= TEXT COLORS ================= */
+
+.text-primary {
+    color: $color-primary-text;
+}
+
+.text-secondary {
+    color: $color-secondary-text;
+}
+
+.text-accent {
+    color: $color-accent-text;
+}
+
+.text-white {
+    color: $color-white;
+}
+
+.text-red {
+    color: $button-primary-bg;
+}
+
+/* ================= STATES ================= */
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

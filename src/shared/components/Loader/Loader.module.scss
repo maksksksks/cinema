@@ -1,0 +1,30 @@
+@use '@/shared/styles/variables' as *;
+
+.loader {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &--accent {
+        filter: brightness(0) invert(1);
+    }
+
+    &--s {
+        width: $loader-size-s;
+        height: $loader-size-s;
+        background-image: url('./loader-s.svg');
+    }
+
+    &--m {
+        width: $loader-size-m;
+        height: $loader-size-m;
+        background-image: url('./loader-m.svg');
+    }
+
+    &--l {
+        width: $loader-size-l;
+        height: $loader-size-l;
+        background-image: url('./loader-l.svg');
+    }
+}
